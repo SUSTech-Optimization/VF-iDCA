@@ -1,6 +1,6 @@
 You should create folder to store results before running the experiments.
 
-For example if you want to run the elasticnet_experiments.py, you should create folder like 
+For example if you want to run the elasticnet_experiments.py, you should create folder as 
 
 ```
 ├── /results/
