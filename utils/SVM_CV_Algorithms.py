@@ -124,7 +124,7 @@ class Training_model:
 
 
 #%%
-def iP_DCA(data_info, DC_Setting = dict(), DEBUG = False):
+def VF_iDCA(data_info, DC_Setting = dict(), DEBUG = False):
     if DEBUG: print("DCA Debuging")
     data = data_info.data
     settings = data_info.settings
