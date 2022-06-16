@@ -22,8 +22,10 @@ IFDM algorithm is based on [`sparse_ho`](https://github.com/QB3/sparse-ho) with 
     ```
     You could change the parameters in the python file according to your demand.
 
-### For General Usage [in process]
-This part will be filled up soon.
+### For General Usage
+`VF_iDCA.py` provides a framework of our alogirthm, however, you need to write the model on your own as `wlasso.py` does, programming details are recorded in `tutorial_wLasso.ipynb`.
+
+`wlasso.py` provides an example on using VF-iDCA solve hyperparameter selection problem on wlasso model.
 
 ## Cite
 If you use this code, please cite:
