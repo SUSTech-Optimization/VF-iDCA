@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from utils.Data_Generator import Data_Generator_Wrapper, Real_Data_Fetcher, Real_Data_Setting
-from utils.ElasticNet_Algorithms import iP_DCA, Bayesian_Method, Grid_Search, Random_Search, IGJO
+from utils.ElasticNet_Algorithms import VF_iDCA, Bayesian_Method, Grid_Search, Random_Search, IGJO
 
 # from utils.ElasticNet_Algorithms import IFDM
 
@@ -88,7 +88,7 @@ def main():
                 Result_HC.to_pickle("../results/real_data/HC_" + str(data_info.data_index) + marker + ".pkl")
             
             if "DC" in Methods:
-                Result_DC = iP_DCA(data_info, DC_Setting)
+                Result_DC = VF_iDCA(data_info, DC_Setting)
                 performance_reporter(Result_DC, 'VF-iDCA', "latest")
                 Result_DC.to_pickle("../results/real_data/DC_" + str(data_info.data_index) + marker + ".pkl")
 

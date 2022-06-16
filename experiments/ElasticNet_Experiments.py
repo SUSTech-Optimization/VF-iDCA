@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from utils.Data_Generator import Data_Generator_Wrapper, ElasticNet_Data_Generator, ElasticNet_Setting
-from utils.ElasticNet_Algorithms import iP_DCA, Bayesian_Method, Grid_Search, Random_Search, IGJO
+from utils.ElasticNet_Algorithms import VF_iDCA, Bayesian_Method, Grid_Search, Random_Search, IGJO
 # from utils.ElasticNet_Algorithms import IFDM # IFDM requires package sparse_ho and a little modification to the source code
 
 from utils.utils import performance_reporter, results_printer
@@ -86,7 +86,7 @@ def main():
         #     Result_IF.to_pickle(result_path + "/elasticnet/IF_" + str(data_info.data_index) + marker + ".pkl")
 
         if "DC" in Methods:
-            Result_DC = iP_DCA(data_info, DC_Setting)
+            Result_DC = VF_iDCA(data_info, DC_Setting)
             performance_reporter(Result_DC, 'VF-iDCA', "latest")
             Result_DC.to_pickle(result_path + "/elasticnet/DC_" + str(data_info.data_index) + marker + ".pkl")
 

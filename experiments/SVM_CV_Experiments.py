@@ -4,7 +4,7 @@ sys.path.append("..")
 
 import numpy as np
 import pandas as pd
-from utils.SVM_CV_Algorithms import iP_DCA, Random_Search, Grid_Search, Bayesian_Method, Bayesian_Method_Simple
+from utils.SVM_CV_Algorithms import VF_iDCA, Random_Search, Grid_Search, Bayesian_Method, Bayesian_Method_Simple
 from utils.Data_Generator import Data_Generator_Wrapper, CV_Real_Data_Setting, CV_Real_Data_Fetcher
 
 from utils.utils import performance_reporter, results_printer
@@ -76,7 +76,7 @@ def main():
                 Result_Bayes.to_pickle(result_path + "/svm/Bayes_" + str(data_info.data_index) + marker + ".pkl")
 
             if "DC" in Methods:
-                Result_DC = iP_DCA(data_info, DC_Setting, DEBUG=False)
+                Result_DC = VF_iDCA(data_info, DC_Setting, DEBUG=False)
                 performance_reporter(Result_DC, 'VF-iDCA', "latest")
                 Result_DC.to_pickle(result_path + "/svm/DC_" + str(data_info.data_index) + marker + ".pkl")
 

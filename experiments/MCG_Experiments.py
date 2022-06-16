@@ -4,7 +4,7 @@ sys.path.append("..")
 
 import numpy as np
 import pandas as pd
-from utils.MCG_Algorithms import Grid_Search, Random_Search, iP_DCA, Bayesian_Method
+from utils.MCG_Algorithms import Grid_Search, Random_Search, VF_iDCA, Bayesian_Method
 # this problelm IGJO
 
 from utils.Data_Generator import MCG_data, MCG_DataGenerator
@@ -98,7 +98,7 @@ def main():
             Result_Bayes.to_pickle(result_path + "/" + problem_name + "/Bayes_" + str(ind+1) + suffix + ".pkl")
 
         if "DC" in Methods:
-            Result_DC = iP_DCA(data, DC_Setting, DEBUG = DEBUG)
+            Result_DC = VF_iDCA(data, DC_Setting, DEBUG = DEBUG)
             performance_reporter(Result_DC, 'VF-iDCA', "latest")
             Result_DC.to_pickle(result_path + "/" + problem_name + "/DC_" + str(ind+1) + suffix + ".pkl")
         
