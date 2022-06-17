@@ -29,7 +29,8 @@ def VF_iDCA(dclower, dcapp, DC_Setting = dict()):
         if err < TOL and penalty < TOL:
             break
 
-        dcapp.update_alpha(err)
+        if err * dcapp.alpha.value <= dcapp.c_alpha * min( 1., dcapp.alpha.value * dcapp.violation.value ):
+            dcapp.alpha.value = dcapp.alpha.value + dcapp.delta
 
         w, r = wp, rp
 

@@ -50,10 +50,6 @@ class DC_approximated():
         self.dc_app.solve(solver = cp.ECOS)
         return self.dc_app.value, self.wU.value, np.maximum(0, self.rU.value)
     
-    def update_alpha(self, err):
-        if err * self.alpha.value <= self.c_alpha * min( 1., self.alpha.value * self.violation.value ):
-            self.alpha.value = self.alpha.value + self.delta
-    
     def clare_variable(self, w, r):
         self.wk.value = w 
         self.rk.value = r
