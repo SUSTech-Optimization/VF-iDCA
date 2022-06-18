@@ -8,7 +8,7 @@ class DC_lower():
     def __init__(self):
         self.wL = cp.Variable(p)
         self.rL = cp.Parameter(p, nonneg=True)
-        LSTr = cp.sum_squares(XTr @ self.wL - yTr) 
+        LSTr = cp.sum_squares(XTr @ self.wL - yTr) / len(yTr)
         self.cons = [self.wL[i] <= self.rL[i] for i in range(p)]
         self.dc_lower = cp.Problem(cp.Minimize(LSTr), self.cons)
 
@@ -36,9 +36,9 @@ class DC_approximated():
 
         self.alpha.value = 1.
 
-        LSVal = cp.sum_squares(XVal @ self.wU - yVal)
+        LSVal = cp.sum_squares(XVal @ self.wU - yVal) / len(yVal)
         prox = cp.sum_squares(self.wU - self.wk) + cp.sum_squares(self.rU - self.rk)
-        Vk = cp.sum_squares(XTr @ self.wU - yTr) - self.fL + self.gamma @ (self.rU - self.rk)
+        Vk = cp.sum_squares(XTr @ self.wU - yTr) / len(yTr) - self.fL + self.gamma @ (self.rU - self.rk)
         self.violation = cp.maximum(*([0, Vk] + [cp.abs(self.wU[i]) - self.rU[i] for i in range(p)]))
 
         phi_k = LSVal + self.rho/2 * prox + self.alpha * self.violation
